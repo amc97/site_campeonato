@@ -31,6 +31,7 @@ if (login_check($mysqli) == true) {
     <head>
         <title>Login - Painel de Controle</title>
         <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/style.css" />
         <script type="text/JavaScript" src="js/sha512.js"></script> 
         <script type="text/JavaScript" src="js/forms.js"></script> 
     </head>
@@ -42,24 +43,36 @@ if (login_check($mysqli) == true) {
         ?>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-4 col-lg-offset-4" style="padding-top: 10%; padding-botton: 10%">
-                <center><h3>Login</h3></center>
-                <form action="includes/process_login.php" method="post" name="login_form"> 			
-                    <div class="form-group">                        
-                        <input class="form-control" type="text" name="email" placeholder="Email"/>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="password" name="password" id="password" placeholder="Senha"/>
-                    </div>
-                    <div class="form-group">
-                        <input class="btn btn-info center-block" type="button" value="Login" onclick="formhash(this.form, this.form.password);" />
-                    </div>
-                </form>
                 <center>
-                <p>Se você não tem um login, por favor <a href="register.php">registre-se</a></p>
-                <!-- <p>Se você já terminou, por favor <a href="includes/logout.php">desconecte-se</a>.</p> -->
-                <p>Atualmente você está <?php echo $logged ?>.</p>
+                    <h1>Painel de controle</h1>
                 </center>
+                <div class="col-sm-4 col-sm-offset-4" style="padding-top: 5%;">                    
+                    <center>
+                        <h3>Login</h3>
+                    </center>
+                    <br>
+                    <form action="includes/process_login.php" method="post" name="login_form"> 			
+                        <div class="form-group">                        
+                            <div class="input-group">
+                                <span class="input-group-addon">@</span>
+                                <input class="form-control" type="text" name="email" placeholder="Email"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                <input class="form-control" type="password" name="password" id="password" placeholder="Senha"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-info center-block" type="button" value="Login" onclick="formhash(this.form, this.form.password);" />
+                        </div>
+                    </form>
+                    <center>
+                    <p>Se você não tem um login, por favor <a href="register.php">registre-se</a>.</p>
+                    <!-- <p>Se você já terminou, por favor <a href="includes/logout.php">desconecte-se</a>.</p> -->
+                    <p>Atualmente você está <?php echo $logged ?>.</p>
+                    </center>
                 </div>
             </div>
         </div>
