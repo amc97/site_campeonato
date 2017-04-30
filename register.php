@@ -33,7 +33,7 @@ include_once 'includes/functions.php';
         set or if the registration script caused an error. -->
         <div class="container-fluid">
             <div class="col-sm-4 col-sm-offset-4">
-                <h2 class="text-center">Crie uma conta</h2>
+                <h1 class="text-center">Crie uma conta</h1>
                 <?php
                 if (!empty($error_msg)) {
                     echo $error_msg;

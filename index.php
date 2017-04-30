@@ -48,7 +48,7 @@ if (login_check($mysqli) == true) {
                 </center>
                 <div class="col-sm-4 col-sm-offset-4" style="padding-top: 5%;">                    
                     <center>
-                        <h3>Login</h3>
+                        <h2>Login</h2>
                     </center>
                     <br>
                     <form action="includes/process_login.php" method="post" name="login_form"> 			
