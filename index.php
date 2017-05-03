@@ -46,7 +46,7 @@ if (login_check($mysqli) == true) {
                 <center>
                     <h1>Painel de controle</h1>
                 </center>
-                <div class="col-sm-4 col-sm-offset-4" style="padding-top: 5%;">                    
+                <div class="col-sm-4 col-sm-offset-4 content-box" style="padding-top: 5%;">                    
                     <center>
                         <h2>Login</h2>
                     </center>

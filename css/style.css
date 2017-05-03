@@ -30,3 +30,17 @@ a{
     font-weight: bold;
     color: aquamarine;
 }
+.content-box, .content-box-large {
+   margin-bottom:30px;
+   background:#fff;
+   border-radius:10px;
+   padding:10px;
+   border-left:1px solid #eee;
+   border-top:1px solid #eee;
+   border-right:2px solid #eee;
+   border-bottom:2px solid #eee; 
+}
+
+.content-box-large {
+  padding: 20px;
+}
