@@ -104,17 +104,17 @@ sec_session_start();
                 $flag = true;                 
                 while ($flag) {                   
                     echo "<div class='row'>";
-                    echo "<div class='col-md-8 col-md-offset-2 style='padding-top: 5%; padding-botton: 5%'>";
+                    echo "<div class='col-md-10 col-md-offset-1' style='padding-top: 5%; padding-botton: 5%'>";                    
                     for ($i=0; $i < 5; $i++) {
                         $imgs = mysql_fetch_object($sql);
                         if($imgs){ 
                             echo "<div class='col-md-2'>";
-                                echo "<img id='image' class='center-block' style='width:100px; height:100px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblema/".$imgs->emblema."'/>";
+                                echo "<img style='width:70px; height:70px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblemas/".$imgs->emblema."'/>";
                             echo "</div>";
                         }else{
                             $flag = false;
                         }
-                    }                  
+                    }                           
                     echo "</div>";
                     echo "</div>";
                 }
@@ -218,6 +218,7 @@ sec_session_start();
                 </div><!-- /#page-content-wrapper -->
                 <div id="2" style="display: none;">
                     <div class="container-fluid">
+                        <h3 class="text-center"><strong>Selecione o time</strong></h3>
                         <?php
                             getTimes();
                         ?>
