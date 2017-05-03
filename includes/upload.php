@@ -9,7 +9,7 @@ if (isset($_POST['upload'])) {
 	
 	// Recupera os dados dos campos	
 	//$thumb = $_FILES["thumb"];
-    $id = $_POST["id"];
+    
     $imagem = $_FILES["emblema"];
     $nome = $_POST['nome'];
     $tecnico = $_POST['tecnico'];
@@ -44,7 +44,7 @@ if (isset($_POST['upload'])) {
 			move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 		
 			// Insere os dados no banco
-            $sql = mysql_query("INSERT INTO times(id, nome, emblema, tecnico) VALUES ('$id','$nome','$nome_imagem', '$tecnico')") or die("Erro " .mysql_error());
+            $sql = mysql_query("INSERT INTO times(nome, emblema, tecnico) VALUES ('$nome','$nome_imagem', '$tecnico')") or die("Erro " .mysql_error());
             //or die("Algo deu errado ao cadastrar o time. Tente novamente. " . mysql_error());
 		
 			if ($sql){                

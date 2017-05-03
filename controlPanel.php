@@ -202,9 +202,7 @@ sec_session_start();
                                     <div class="form-group">													
                                         <input type="text" class="form-control" placeholder="Nome do time" name="nome">							
                                     </div>
-                                    <div class="form-group">
-                                        <input type="number" class="form-control" placeholder="ID do time" name="id">   
-                                    </div>
+                                    
                                     <div class="form-group">														
                                         <input type="text" class="form-control" placeholder="Técnico" name="tecnico">
                                     </div>
