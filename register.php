@@ -56,7 +56,7 @@ include_once 'includes/functions.php';
                 <form method="post" name="registration_form" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>">
                     <div class="form-group">
                         <div class="input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-ok"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                             <input class="form-control" type='text' name='username' id='username' placeholder="Nome de usuário"/>
                         </div>
                     </div>
@@ -79,7 +79,7 @@ include_once 'includes/functions.php';
                         </div>
                     </div>
                     <div class="form-group">
-                        <input class="btn btn-info center-block" type="button" value="Registrar" onclick="return regformhash(this.form, this.form.username, this.form.email, this.form.password, this.form.confirmpwd);" />
+                        <input class="btn btn-info center-block" type="submit" value="Registrar" onclick="return regformhash(this.form, this.form.username, this.form.email, this.form.password, this.form.confirmpwd);" />
                     </div>
                 </form>
                 <br><p class="text-center">Retornar à página de <a href="index.php">login</a>.</p>

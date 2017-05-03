@@ -8,7 +8,7 @@ sec_session_start();
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8">    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -93,6 +93,34 @@ sec_session_start();
                 }
             }
 
+        
+            function getTimes(){
+                // Seleciona todos as imagens
+                $conn = @mysql_connect("localhost", "root", "") or die ("Problemas na conexão 1. " . mysql_error());
+                $db = @mysql_select_db("secure_login", $conn) or die ("Problemas na conexão 2. " . mysql_error());
+
+                $sql = mysql_query("SELECT emblema FROM times ORDER BY id");
+            
+                $flag = true;                 
+                while ($flag) {                   
+                    echo "<div class='row'>";
+                    echo "<div class='col-md-8 col-md-offset-2 style='padding-top: 5%; padding-botton: 5%'>";
+                    for ($i=0; $i < 5; $i++) {
+                        $imgs = mysql_fetch_object($sql);
+                        if($imgs){ 
+                            echo "<div class='col-md-2'>";
+                                echo "<img id='image' class='center-block' style='width:100px; height:100px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblema/".$imgs->emblema."'/>";
+                            echo "</div>";
+                        }else{
+                            $flag = false;
+                        }
+                    }                  
+                    echo "</div>";
+                    echo "</div>";
+                }
+            }
+        
+    
         ?>
 
 	    <div id="wrapper">
@@ -113,11 +141,11 @@ sec_session_start();
 	            <ul class="nav navbar-right top-nav">
 	                
 	                <li class="dropdown">
-	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo htmlentities($_SESSION['username']); ?> <b class="caret"></b></a>
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg"></i> <?php echo htmlentities($_SESSION['username']); ?> <b class="caret"></b></a>
 	                    <ul class="dropdown-menu">
 	                        
 	                        <li>
-	                            <a href="includes/logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+	                            <a href="includes/logout.php"><i class="fa fa-fw fa-power-off fa-lg"></i> Log Out</a>
 	                        </li>
 	                    </ul>
 	                </li>
@@ -126,13 +154,13 @@ sec_session_start();
 	            <div class="collapse navbar-collapse navbar-ex1-collapse">
 	                <ul class="nav navbar-nav side-nav">
 	                    <li>
-	                        <a onClick="visualizarForm('1');" href="#"><i class="fa fa-fw fa-dashboard"></i> Cadastrar Time</a>
+	                        <a onClick="visualizarForm('1');" href="#"><i class="fa fa-futbol-o fa-lg" aria-hidden="true"></i> Cadastrar Time</a>
 	                    </li>
 	                    <li>
-	                        <a onClick="visualizarForm('2');" href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Cadastrar Jogadores</a>
+	                        <a onClick="visualizarForm('2');" href="#"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Cadastrar Jogadores</a>
 	                    </li>
 	                    <li>
-	                        <a onClick="visualizarForm('3');" href="#"><i class="fa fa-fw fa-table"></i> Atualizar Dados</a>
+	                        <a onClick="visualizarForm('3');" href="#"><i class="fa fa-refresh fa-lg" aria-hidden="true"></i> Atualizar Dados</a>
 	                    </li>
 	                    
 	                </ul>
@@ -160,25 +188,28 @@ sec_session_start();
                     <div class="container-fluid">
                         <div class="row">                    
                             <div class="col-lg-4 col-lg-offset-4" style="padding-top: 10%; padding-botton: 10%">                            
-                                <form enctype="multipart/form-data" method="post" action="">                        							
-
-                                    <img id="image" class="center-block" style="width:100px; height:100px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;" src="img/emblema.png"/>																			
+                                <form enctype="multipart/form-data" method="post" action="includes/upload.php">				
+                                    <img id="image" class="center-block" style="width:100px; height:100px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;" src="img/emblema.png"/>				
                                     <br>
-
-                                    <center><label class="btn btn-info">
-                                        Escolher emblema
-                                        <input type="file" id="files" style="display: none;">    				
-                                    </label></center>												                            
+                                    <center>
+                                        <label class="btn btn-info">
+                                            Escolher emblema
+                                            <input type="file" id="files" style="display: none;" name="emblema">    				
+                                        </label>
+                                    </center>												                            
 
                                     <h4 class="text-center">Dados do time</h4>
                                     <div class="form-group">													
-                                        <input type="text" class="form-control" placeholder="Nome do time">									
-                                    </div>
-                                    <div class="form-group">														
-                                        <input type="text" class="form-control" placeholder="Técnico">
+                                        <input type="text" class="form-control" placeholder="Nome do time" name="nome">							
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-info center-block">
+                                        <input type="number" class="form-control" placeholder="ID do time" name="id">   
+                                    </div>
+                                    <div class="form-group">														
+                                        <input type="text" class="form-control" placeholder="Técnico" name="tecnico">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-info center-block" name="upload">
                                     </div>
                                 </form>											                                
                             </div>                    
@@ -187,22 +218,9 @@ sec_session_start();
                 </div><!-- /#page-content-wrapper -->
                 <div id="2" style="display: none;">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-10 col-lg-offset-1" style="padding-top: 5%; padding-botton: 20%">                            
-                                <center>
-                                <form enctype="multipart/form-data" method="post" action="" class="form-inline">
-                                    <h4 class="text-center">Selecione o time</h4>
-                                    <select class="form-control">
-                                        <?php imprimeTimes() ?>
-                                    </select>
-                                    <br><br>
-                                    <h4 class="text-center">Dados dos jogadores</h4>
-
-                                    <?php imprimeForms() ?>                                                                                               <br><br><br>         
-                                </form>
-                                </center>										                                
-                            </div>
-                        </div>
+                        <?php
+                            getTimes();
+                        ?>
                     </div>
                 </div><!-- /#page-content-wrapper -->
                 <div id="3" style="display: none;">
