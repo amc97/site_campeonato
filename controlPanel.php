@@ -102,21 +102,20 @@ sec_session_start();
                 $sql = mysql_query("SELECT emblema FROM times ORDER BY id");
             
                 $flag = true;                 
+                
                 while ($flag) {                   
-                    echo "<div class='row'>";
-                    echo "<div class='col-md-10 col-md-offset-1' style='padding-top: 5%; padding-botton: 5%'>";                    
-                    for ($i=0; $i < 5; $i++) {
+                    echo "<ul class='list-inline'>";
+                    for ($i=0; $i < 10; $i++) {
                         $imgs = mysql_fetch_object($sql);
                         if($imgs){ 
-                            echo "<div class='col-md-2'>";
-                                echo "<img style='width:70px; height:70px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblemas/".$imgs->emblema."'/>";
-                            echo "</div>";
+                            echo "<li>";
+                                echo "<img style='margin: 5px; width:70px; height:70px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblemas/".$imgs->emblema."'/>";
+                            echo "</li>";
                         }else{
                             $flag = false;
                         }
                     }                           
-                    echo "</div>";
-                    echo "</div>";
+                    echo "</ul>";
                 }
             }
         
@@ -216,10 +215,14 @@ sec_session_start();
                 </div><!-- /#page-content-wrapper -->
                 <div id="2" style="display: none;">
                     <div class="container-fluid">
-                        <h3 class="text-center"><strong>Selecione o time</strong></h3>
-                        <?php
-                            getTimes();
-                        ?>
+                        <div class="row">
+                            <h3 class="text-center"><strong>Selecione o time</strong></h3>
+                            <div class="col-md-10 col-md-offset-1 text-center" style="padding-top: 5%; padding-botton: 5%">        
+                                <?php
+                                    getTimes();
+                                ?>
+                            </div>
+                        </div>
                     </div>
                 </div><!-- /#page-content-wrapper -->
                 <div id="3" style="display: none;">
