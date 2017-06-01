@@ -28,6 +28,8 @@ sec_session_start();
 <body>
 	<?php if (login_check($mysqli) == true) : ?>
 		<script>
+            var cont = 2;
+            
             function visualizarForm(opcao) {       
                 if(opcao == '0') {                          
                     document.getElementById('0').style.display = 'block';
@@ -55,42 +57,48 @@ sec_session_start();
                 }
             }
 
-            function logout(){
-
+            function geraForm(){
+                var aux = "form" + cont;
+                document.getElementById(aux).style.display = 'block';
+                cont++;
             }
         </script>
 
         <?php
             function imprimeForms(){
                 for($i = 1; $i <= 12; $i++){
-                    echo "<div class='row'>";
-                    if($i < 10){
-                        echo "0$i - ";
+                    
+                    if($i == 1){
+                        echo "<div id='form$i' style='display: block;'>";
                     }else{
-                        echo "$i - ";
-                    }                
+                        echo "<div id='form$i' style='display: none;'>";
+                    }    
+                    echo "<div class='panel panel-default'>";
+                    echo "<div class='panel-body'>";
                     echo "<div class='form-group'>";
-                    echo "<input type='text' class='form-control' placeholder='Nome'>";
-                    echo "</div>";
-                    echo "<div class='form-group'>";
-                    echo "<input type='date' class='form-control'>";
-                    echo "</div>";
-                    echo "<div class='form-group'>";
-                    echo "<input type='text' class='form-control' placeholder='CPF'>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "<br>";
-                }
-                echo "<br>";
-                echo "<div class='form-group'>";
-                echo "<input type='submit' class='btn btn-info center-block'>";
-                echo "</div>";
-            }
-
-            function imprimeTimes(){
-                for($i = 1; $i <= 20; $i++){
-                    echo"<option>Time $i</option>";
-                }
+                    if($i <= 5){
+                        echo "<input type='text' class='form-control' placeholder='Nome do jogador $i' name='nome$i' required='required'>";
+                        echo "</div>";
+                        echo "<div class='form-group'>";
+                        echo "<input type='text' class='form-control' placeholder='CPF' name='cpf$i' required='required'>";
+                        echo "</div>";
+                        echo "<div class='form-group'>";
+                        echo "<input type='number' class='form-control' placeholder='N° da camisa' name='num$i' required='required'>";
+                    }else{
+                        echo "<input type='text' class='form-control' placeholder='Nome do jogador $i' name='nome$i'>";
+                        echo "</div>";
+                        echo "<div class='form-group'>";
+                        echo "<input type='text' class='form-control' placeholder='CPF' name='cpf$i'>";
+                        echo "</div>";
+                        echo "<div class='form-group'>";
+                        echo "<input type='number' class='form-control' placeholder='N° da camisa' name='num$i'>";
+                    }
+                    echo "</div>";                    
+                    echo "</div>";                   
+                    echo "</div>";                    
+                    echo "</div>";                    
+                }                
+                
             }
 
         
@@ -99,7 +107,7 @@ sec_session_start();
                 $conn = @mysql_connect("localhost", "root", "") or die ("Problemas na conexão 1. " . mysql_error());
                 $db = @mysql_select_db("secure_login", $conn) or die ("Problemas na conexão 2. " . mysql_error());
 
-                $sql = mysql_query("SELECT emblema FROM times ORDER BY id");
+                $sql = mysql_query("SELECT emblema FROM times ORDER BY nome");
             
                 $flag = true;                 
                 
@@ -109,7 +117,7 @@ sec_session_start();
                         $imgs = mysql_fetch_object($sql);
                         if($imgs){ 
                             echo "<li>";
-                                echo "<img style='margin: 5px; width:70px; height:70px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblemas/".$imgs->emblema."'/>";
+                                echo "<a href='#'><img style='margin: 5px; width:70px; height:70px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblemas/".$imgs->emblema."'/></a>";
                             echo "</li>";
                         }else{
                             $flag = false;
@@ -156,10 +164,10 @@ sec_session_start();
 	                        <a onClick="visualizarForm('1');" href="#"><i class="fa fa-futbol-o fa-lg" aria-hidden="true"></i> Cadastrar Time</a>
 	                    </li>
 	                    <li>
-	                        <a onClick="visualizarForm('2');" href="#"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Cadastrar Jogadores</a>
+	                        <a onClick="visualizarForm('2');" href="#"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Atualizar estatísticas</a>
 	                    </li>
 	                    <li>
-	                        <a onClick="visualizarForm('3');" href="#"><i class="fa fa-refresh fa-lg" aria-hidden="true"></i> Atualizar Dados</a>
+	                        <a onClick="visualizarForm('3');" href="#"><i class="fa fa-refresh fa-lg" aria-hidden="true"></i> Gerenciar conteúdo</a>
 	                    </li>
 	                    
 	                </ul>
@@ -186,7 +194,7 @@ sec_session_start();
                 <div id="1" style="display: none;">
                     <div class="container-fluid">
                         <div class="row">                    
-                            <div class="col-lg-4 col-lg-offset-4" style="padding-top: 10%; padding-botton: 10%">                            
+                            <div class="col-lg-6 col-lg-offset-3" style="padding-top: 10%; padding-botton: 10%">                            
                                 <form enctype="multipart/form-data" method="post" action="includes/upload.php">				
                                     <img id="image" class="center-block" style="width:100px; height:100px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;" src="img/emblema.png"/>				
                                     <br>
@@ -203,8 +211,21 @@ sec_session_start();
                                     </div>
                                     
                                     <div class="form-group">														
-                                        <input type="text" class="form-control" placeholder="Técnico" name="tecnico">
+                                        <input type="text" class="form-control" placeholder="Nome do técnico" name="tecnico">
                                     </div>
+                                    <div class="form-group">
+                                        <select class="form-control">
+                                          <option>1° Divisão</option>
+                                          <option>2° Divisão</option>
+                                          <option>3° Divisão</option>
+                                          <option>Feminino</option>                                          
+                                        </select>
+                                    </div>
+                                    <h4 class="text-center">Jogadores</h4>
+                                    <?php
+                                        imprimeForms();
+                                    ?>
+                                    <div onclick="geraForm();" class="btn btn-default btn-sm"><span class="fa fa-plus"></span></div>
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-info center-block" name="upload">
                                     </div>
@@ -228,14 +249,9 @@ sec_session_start();
                 <div id="3" style="display: none;">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-12">
-                                <h1>Testanto 3</h1>
-                                <p>cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-                                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-                                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-                                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-                                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-                                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</p>
+                            <div class="col-lg-12 text-center">
+                                <h1>Informações</h1>
+                                <p>Esta área está em desenvolvimento.</p>
 
                             </div>
                         </div>

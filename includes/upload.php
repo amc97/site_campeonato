@@ -47,6 +47,17 @@ if (isset($_POST['upload'])) {
             $sql = mysql_query("INSERT INTO times(nome, emblema, tecnico) VALUES ('$nome','$nome_imagem', '$tecnico')") or die("Erro " .mysql_error());
             //or die("Algo deu errado ao cadastrar o time. Tente novamente. " . mysql_error());
 		
+            for($i = 0; $i < 12; $i++){
+                $jogador = "nome$i";
+                $cpf_jogador = "cpf$i";
+                $num_camisa = "num$i";
+                if(isset($_POST[$jogador]) && isset($_POST[$cpf_jogador]) && isset($_POST[$num_camisa])){
+                    if($_POST[$jogador] != "" && $_POST[$cpf_jogador] != "" && $_POST[$num_camisa] != ""){
+                        $sql = mysql_query("INSERT INTO jogador(nome, cpf, numero, nome_time) VALUES ('$_POST[$jogador]', '$_POST[$cpf_jogador]', '$_POST[$num_camisa]', '$nome')");
+                    }
+                }
+            }
+            
 			if ($sql){                
                 header('Location: ../controlPanel.php');                
             }else{

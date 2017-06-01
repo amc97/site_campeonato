@@ -31,49 +31,50 @@ if (login_check($mysqli) == true) {
     <head>
         <title>Login - Painel de Controle</title>
         <link rel="stylesheet" href="css/bootstrap.css" />
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/teste.css" />
         <script type="text/JavaScript" src="js/sha512.js"></script> 
         <script type="text/JavaScript" src="js/forms.js"></script> 
     </head>
-    <body>
+    <body class="corpo">
         <?php
         if (isset($_GET['error'])) {
             echo '<h3 class="text-center">Erro ao logar!</h3>';
         }
         ?>
         <div class="container-fluid">
-            <div class="row">
-                <center>
-                    <h1>Painel de controle</h1>
-                </center>
-                <div class="col-sm-4 col-sm-offset-4 content-box" style="padding-top: 5%;">                    
-                    <center>
-                        <h2>Login</h2>
-                    </center>
-                    <br>
-                    <form action="includes/process_login.php" method="post" name="login_form"> 			
-                        <div class="form-group">                        
-                            <div class="input-group">
-                                <span class="input-group-addon">@</span>
-                                <input class="form-control" type="text" name="email" placeholder="Email"/>
+            <div class="row">                
+                <div class="col-sm-4 col-sm-offset-4" style="padding-top: 10%;">
+                    <div class="panel panel-default">
+                    <div class="panel-body">
+                        <legend class="text-center">
+                            <h2>Login</h2>
+                        </legend>
+                        <br>
+                        <form action="includes/process_login.php" method="post" name="login_form"> 			
+                            <div class="form-group">                        
+                                <div class="input-group">
+                                    <span class="input-group-addon">@</span>
+                                    <input class="form-control" type="text" name="email" placeholder="Email"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                <input class="form-control" type="password" name="password" id="password" placeholder="Senha"/>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                    <input class="form-control" type="password" name="password" id="password" placeholder="Senha"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <input class="btn btn-info center-block" type="submit" value="Login" onclick="formhash(this.form, this.form.password);" />
-                        </div>
-                    </form>
-                    <center>
-                    <p>Se você não tem um login, por favor <a href="register.php">registre-se</a>.</p>
-                    <!-- <p>Se você já terminou, por favor <a href="includes/logout.php">desconecte-se</a>.</p> -->
-                    <p>Atualmente você está <?php echo $logged ?>.</p>
-                    </center>
+                            <div class="form-group">
+                                <input class="btn btn-info center-block" type="submit" value="Login" onclick="formhash(this.form, this.form.password);" />
+                            </div>
+                        </form>
+                        <center>
+                        <p>Se você não tem um login, por favor <a href="register.php">registre-se</a>.</p>
+                        <!-- <p>Se você já terminou, por favor <a href="includes/logout.php">desconecte-se</a>.</p> -->
+                        <p>Atualmente você está <?php echo $logged ?>.</p>
+                        </center>
+                    </div>
                 </div>
+            </div>
             </div>
         </div>
     </body>
