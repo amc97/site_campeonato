@@ -107,7 +107,7 @@ sec_session_start();
                 $conn = @mysql_connect("localhost", "root", "") or die ("Problemas na conexão 1. " . mysql_error());
                 $db = @mysql_select_db("secure_login", $conn) or die ("Problemas na conexão 2. " . mysql_error());
 
-                $sql = mysql_query("SELECT emblema FROM times ORDER BY nome");
+                $sql = mysql_query("SELECT emblema, nome FROM times ORDER BY nome");
             
                 $flag = true;                 
                 
@@ -117,7 +117,7 @@ sec_session_start();
                         $imgs = mysql_fetch_object($sql);
                         if($imgs){ 
                             echo "<li>";
-                                echo "<a href='#'><img style='margin: 5px; width:70px; height:70px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblemas/".$imgs->emblema."'/></a>";
+                                echo "<a href='#'><img style='margin: 5px; width:70px; height:70px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblemas/".$imgs->emblema."'/></a><br><h6><strong>$imgs->nome</strong></h6>";
                             echo "</li>";
                         }else{
                             $flag = false;
@@ -222,6 +222,7 @@ sec_session_start();
                                         </select>
                                     </div>
                                     <h4 class="text-center">Jogadores</h4>
+                                    <p class="text-center">Cadastre no mínimo 5 jogadores.<br>Você pode adicionar um jogador clicando no ícone  + abaixo do formulário.</p>
                                     <?php
                                         imprimeForms();
                                     ?>
