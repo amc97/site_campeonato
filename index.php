@@ -30,10 +30,10 @@ if (login_check($mysqli) == true) {
 <html>
     <head>
         <title>Login - Painel de Controle</title>
-        <link rel="stylesheet" href="css/bootstrap.css" />
-        <link rel="stylesheet" href="css/teste.css" />
-        <script type="text/JavaScript" src="js/sha512.js"></script> 
-        <script type="text/JavaScript" src="js/forms.js"></script> 
+        <link rel="stylesheet" href="bootstrapAdmin/css/bootstrap.css" />
+        <link rel="stylesheet" href="bootstrapAdmin/css/teste.css" />
+        <script type="text/JavaScript" src="bootstrapAdmin/js/sha512.js"></script> 
+        <script type="text/JavaScript" src="bootstrapAdmin/js/forms.js"></script> 
     </head>
     <body class="corpo">
         <?php
