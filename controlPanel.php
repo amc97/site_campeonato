@@ -107,15 +107,30 @@ sec_session_start();
                 $conn = @mysql_connect("localhost", "root", "") or die ("Problemas na conexão 1. " . mysql_error());
                 $db = @mysql_select_db("secure_login", $conn) or die ("Problemas na conexão 2. " . mysql_error());
 
-                $sql = mysql_query("SELECT emblema, nome FROM times ORDER BY nome");
+                $sql = mysql_query("SELECT emblema, nome, divisao FROM times ORDER BY divisao");
             
                 $flag = true;                 
                 
-                while ($flag) {                   
+                while ($flag) {                    
                     echo "<ul class='list-inline'>";
+                    $flagDivisao = true;
                     for ($i=0; $i < 10; $i++) {
-                        $imgs = mysql_fetch_object($sql);
-                        if($imgs){ 
+                        $imgs = mysql_fetch_object($sql);                                                
+                        if($imgs){                            
+                            $divisao = $imgs->divisao;                            
+                            if($divisao == 'divisao 1' && $flagDivisao == true){
+                                echo "<h2 class='text-center'>1° Divisão</h2>";
+                                $flagDivisao = false;
+                            }else if($imgs->divisao == 'divisao 2' && $flagDivisao == true){
+                                echo "<h2 class='text-center'>2° Divisão</h2>";
+                                $flagDivisao = false;
+                            }else if($imgs->divisao == 'divisao 3' && $flagDivisao == true){
+                                echo "<h2 class='text-center'>3° Divisão</h2>";
+                                $flagDivisao = false;
+                            }else if($imgs->divisao == 'feminino' && $flagDivisao == true){
+                                echo "<h2 class='text-center'>Feminino</h2>";
+                                $flagDivisao = false;
+                            }
                             echo "<li>";
                                 echo "<a href='#'><img style='margin: 5px; width:70px; height:70px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblemas/".$imgs->emblema."'/></a><br><h6><strong>$imgs->nome</strong></h6>";
                             echo "</li>";
@@ -214,11 +229,11 @@ sec_session_start();
                                         <input type="text" class="form-control" placeholder="Nome do técnico" name="tecnico">
                                     </div>
                                     <div class="form-group">
-                                        <select class="form-control">
-                                          <option>1° Divisão</option>
-                                          <option>2° Divisão</option>
-                                          <option>3° Divisão</option>
-                                          <option>Feminino</option>                                          
+                                        <select class="form-control" name="divisao">
+                                          <option value="divisao 1">1° Divisão</option>
+                                          <option value="divisao 2">2° Divisão</option>
+                                          <option value="divisao 3">3° Divisão</option>
+                                          <option value="feminino">Feminino</option>                                          
                                         </select>
                                     </div>
                                     <h4 class="text-center">Jogadores</h4>
