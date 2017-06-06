@@ -84,7 +84,7 @@ include_once 'includes/functions.php';
                             <input class="btn btn-info center-block" type="submit" value="Registrar" onclick="return regformhash(this.form, this.form.username, this.form.email, this.form.password, this.form.confirmpwd);" />
                         </div>
                     </form>
-                    <br><p class="text-center">Retornar à página de <a href="index.php">login</a>.</p>
+                    <br><p class="text-center">Retornar à página de <a href="login.php">login</a>.</p>
                 </div>
             </div>
             </div>

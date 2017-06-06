@@ -102,44 +102,29 @@ sec_session_start();
             }
 
         
-            function getTimes(){
+            function getTimes($divisao, $op){
                 // Seleciona todos as imagens
                 $conn = @mysql_connect("localhost", "root", "") or die ("Problemas na conexão 1. " . mysql_error());
                 $db = @mysql_select_db("secure_login", $conn) or die ("Problemas na conexão 2. " . mysql_error());
 
-                $sql = mysql_query("SELECT emblema, nome, divisao FROM times ORDER BY divisao");
+                $sql = mysql_query("SELECT emblema, nome, divisao FROM times WHERE divisao = '$divisao' ORDER BY nome");
             
                 $flag = true;                 
-                
+                echo "<h2 class='text-center'>$op</h2>";
                 while ($flag) {                    
-                    echo "<ul class='list-inline'>";
-                    $flagDivisao = true;
+                    echo "<ul class='list-inline'>";                                        
                     for ($i=0; $i < 10; $i++) {
                         $imgs = mysql_fetch_object($sql);                                                
-                        if($imgs){                            
-                            $divisao = $imgs->divisao;                            
-                            if($divisao == 'divisao 1' && $flagDivisao == true){
-                                echo "<h2 class='text-center'>1° Divisão</h2>";
-                                $flagDivisao = false;
-                            }else if($imgs->divisao == 'divisao 2' && $flagDivisao == true){
-                                echo "<h2 class='text-center'>2° Divisão</h2>";
-                                $flagDivisao = false;
-                            }else if($imgs->divisao == 'divisao 3' && $flagDivisao == true){
-                                echo "<h2 class='text-center'>3° Divisão</h2>";
-                                $flagDivisao = false;
-                            }else if($imgs->divisao == 'feminino' && $flagDivisao == true){
-                                echo "<h2 class='text-center'>Feminino</h2>";
-                                $flagDivisao = false;
-                            }
+                        if($imgs){                                                        
                             echo "<li>";
-                                echo "<a href='#'><img style='margin: 5px; width:70px; height:70px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblemas/".$imgs->emblema."'/></a><br><h6><strong>$imgs->nome</strong></h6>";
+                                echo "<a href='?$imgs->nome'><img style='margin: 5px; width:70px; height:70px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblemas/".$imgs->emblema."'/></a><br><h6><strong>$imgs->nome</strong></h6>";
                             echo "</li>";
                         }else{
                             $flag = false;
                         }
                     }                           
                     echo "</ul>";
-                }
+                }                                
             }
         
     
@@ -254,9 +239,12 @@ sec_session_start();
                     <div class="container-fluid">
                         <div class="row">
                             <h3 class="text-center"><strong>Selecione o time</strong></h3>
-                            <div class="col-md-10 col-md-offset-1 text-center" style="padding-top: 5%; padding-botton: 5%">        
+                            <div class="col-md-10 col-md-offset-1 text-center" style="padding-top: 2%; padding-botton: 5%">        
                                 <?php
-                                    getTimes();
+                                    getTimes('divisao 1', '1° Divisão');
+                                    getTimes('divisao 2', '2° Divisão');
+                                    getTimes('divisao 3', '3° Divisão');
+                                    getTimes('feminino', 'Feminino');
                                 ?>
                             </div>
                         </div>
@@ -281,10 +269,10 @@ sec_session_start();
 	    <!-- /#wrapper -->
 
 	    <!-- jQuery -->
-	    <script src="js/jquery.js"></script>
+	    <script src="bootstrapAdmin/js/jquery.js"></script>
 
 	    <!-- Bootstrap Core JavaScript -->
-	    <script src="js/bootstrap.min.js"></script>
+	    <script src="bootstrapAdmin/js/bootstrap.min.js"></script>
 
 	    <!-- Morris Charts JavaScript -->
 	    <script src="js/plugins/morris/raphael.min.js"></script>
@@ -305,7 +293,7 @@ sec_session_start();
         </script>
 	<?php else : ?>
         <p>
-        	<span class="error">Você não está autorizado a acessar essa página.</span> Por favor faça <a href="index.php">login</a>.
+        	<span class="error">Você não está autorizado a acessar essa página.</span> Por favor faça <a href="login.php">login</a>.
         </p>
    	<?php endif; ?>
 </body>

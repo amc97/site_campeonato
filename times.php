@@ -34,9 +34,9 @@
         <ul class="nav nav-pills nav-justified">
           <li></li>
           <li></li>
-          <li><a href="paginaInicial.php">HOME</a></li>
+          <li><a href="index.php">HOME</a></li>
           <li><a href="times.php">TIMES</a></li>
-          <li><a href="#">JOGADORES</a></li>
+          <li><a href="#">ESTATÍSTICAS</a></li>
           <li><a href="#">NOTÍCIAS</a></li>
           <li></li>
           <li></li>
