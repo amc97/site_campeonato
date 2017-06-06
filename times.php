@@ -1,3 +1,7 @@
+<?php
+include_once 'includes/functions.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,42 +40,15 @@
           <li></li>
           <li><a href="index.php">HOME</a></li>
           <li><a href="times.php">TIMES</a></li>
-          <li><a href="#">ESTATÍSTICAS</a></li>
-          <li><a href="#">NOTÍCIAS</a></li>
+          <li><a href="estatisticas.php">ESTATÍSTICAS</a></li>
+          <li><a href="#">GALERIA</a></li>
           <li></li>
           <li></li>
           </li>
         </ul>
       </div>
     </div>
-  </nav>
-  <?php
-    function getTimes(){
-      // Seleciona todos as imagens
-      $conn = @mysql_connect("localhost", "root", "") or die ("Problemas na conexão 1. " . mysql_error());
-      $db = @mysql_select_db("secure_login", $conn) or die ("Problemas na conexão 2. " . mysql_error());
-
-      $sql = mysql_query("SELECT emblema, nome FROM times ORDER BY nome");
-  
-      $flag = true;                 
-      
-      while ($flag) {                   
-        echo "<ul class='list-inline'>";
-        for ($i=0; $i < 10; $i++) {
-          $imgs = mysql_fetch_object($sql);
-          if($imgs){ 
-            echo "<li>";
-            echo "<a href='#'><img style='margin: 5px; width:70px; height:70px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblemas/".$imgs->emblema."'/></a><br><h6><strong>$imgs->nome</strong></h6>";
-            echo "</li>";
-          }else{
-            $flag = false;
-          }
-        }                           
-        echo "</ul>";
-      }
-    }
-  ?>
-  
+  </nav>  
   <br><br><br><br>
 
   <div id="2" style="display: block;">
@@ -80,7 +57,10 @@
           <h3 class="text-center"><strong>Selecione o time</strong></h3>
           <div class="col-md-10 col-md-offset-1 text-center" style="padding-top: 1%; padding-bottom: 1%;">  
               <?php
-                getTimes();
+                getTimes('divisao 1', '1° Divisão');
+                getTimes('divisao 2', '2° Divisão');
+                getTimes('divisao 3', '3° Divisão');
+                getTimes('feminino', 'Feminino');
               ?>
           </div>
       </div>

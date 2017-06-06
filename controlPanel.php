@@ -63,73 +63,7 @@ sec_session_start();
                 cont++;
             }
         </script>
-
-        <?php
-            function imprimeForms(){
-                for($i = 1; $i <= 12; $i++){
-                    
-                    if($i == 1){
-                        echo "<div id='form$i' style='display: block;'>";
-                    }else{
-                        echo "<div id='form$i' style='display: none;'>";
-                    }    
-                    echo "<div class='panel panel-default'>";
-                    echo "<div class='panel-body'>";
-                    echo "<div class='form-group'>";
-                    if($i <= 5){
-                        echo "<input type='text' class='form-control' placeholder='Nome do jogador $i' name='nome$i' required='required'>";
-                        echo "</div>";
-                        echo "<div class='form-group'>";
-                        echo "<input type='text' class='form-control' placeholder='CPF' name='cpf$i' required='required'>";
-                        echo "</div>";
-                        echo "<div class='form-group'>";
-                        echo "<input type='number' class='form-control' placeholder='N° da camisa' name='num$i' required='required'>";
-                    }else{
-                        echo "<input type='text' class='form-control' placeholder='Nome do jogador $i' name='nome$i'>";
-                        echo "</div>";
-                        echo "<div class='form-group'>";
-                        echo "<input type='text' class='form-control' placeholder='CPF' name='cpf$i'>";
-                        echo "</div>";
-                        echo "<div class='form-group'>";
-                        echo "<input type='number' class='form-control' placeholder='N° da camisa' name='num$i'>";
-                    }
-                    echo "</div>";                    
-                    echo "</div>";                   
-                    echo "</div>";                    
-                    echo "</div>";                    
-                }                
-                
-            }
-
         
-            function getTimes($divisao, $op){
-                // Seleciona todos as imagens
-                $conn = @mysql_connect("localhost", "root", "") or die ("Problemas na conexão 1. " . mysql_error());
-                $db = @mysql_select_db("secure_login", $conn) or die ("Problemas na conexão 2. " . mysql_error());
-
-                $sql = mysql_query("SELECT emblema, nome, divisao FROM times WHERE divisao = '$divisao' ORDER BY nome");
-            
-                $flag = true;                 
-                echo "<h2 class='text-center'>$op</h2>";
-                while ($flag) {                    
-                    echo "<ul class='list-inline'>";                                        
-                    for ($i=0; $i < 10; $i++) {
-                        $imgs = mysql_fetch_object($sql);                                                
-                        if($imgs){                                                        
-                            echo "<li>";
-                                echo "<a href='?$imgs->nome'><img style='margin: 5px; width:70px; height:70px; border: 2px solid #DDD ; border-radius: 3px; padding:5px;' src='emblemas/".$imgs->emblema."'/></a><br><h6><strong>$imgs->nome</strong></h6>";
-                            echo "</li>";
-                        }else{
-                            $flag = false;
-                        }
-                    }                           
-                    echo "</ul>";
-                }                                
-            }
-        
-    
-        ?>
-
 	    <div id="wrapper">
 
 	        <!-- Navigation -->
