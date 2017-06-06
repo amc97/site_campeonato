@@ -91,10 +91,10 @@
         <div id="tabelas" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">
-            <li data-target="#tabelas" data-slide-to="0" class="active"></li>
-            <li data-target="#tabelas" data-slide-to="1"></li>
-            <li data-target="#tabelas" data-slide-to="2"></li>
-            <li data-target="#tabelas" data-slide-to="3"></li>
+            <li style="background-color: black;" data-target="#tabelas" data-slide-to="0" class="active"></li>
+            <li style="background-color: black;" data-target="#tabelas" data-slide-to="1"></li>
+            <li style="background-color: black;" data-target="#tabelas" data-slide-to="2"></li>
+            <li style="background-color: black;" data-target="#tabelas" data-slide-to="3"></li>
           </ol>
 
           <!-- Wrapper for slides -->
