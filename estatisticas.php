@@ -38,6 +38,30 @@
                 document.getElementById('2').style.display = 'none';
                 document.getElementById('3').style.display = 'block';       
             }
+            if(opcao == '4') {                          
+                document.getElementById('4').style.display = 'block';
+                document.getElementById('5').style.display = 'none';
+                document.getElementById('6').style.display = 'none';
+                document.getElementById('7').style.display = 'none';
+            }
+            if(opcao == '5') {                          
+                document.getElementById('4').style.display = 'none';
+                document.getElementById('5').style.display = 'block';
+                document.getElementById('6').style.display = 'none';
+                document.getElementById('7').style.display = 'none';
+            }
+            if(opcao == '6') {          
+                document.getElementById('4').style.display = 'none';
+                document.getElementById('5').style.display = 'none';
+                document.getElementById('6').style.display = 'block';
+                document.getElementById('7').style.display = 'none';       
+            }
+            if(opcao == '7') {          
+                document.getElementById('4').style.display = 'none';
+                document.getElementById('5').style.display = 'none';
+                document.getElementById('6').style.display = 'none';
+                document.getElementById('7').style.display = 'block';       
+            }
         }
     </script>
 
@@ -895,10 +919,191 @@
             <div class="panel panel-default">
                 <legend class="text-center">Artilheiros</legend>
                 <div class="panel-body text-center">
-                    <div class="col-xs-3"><button class="btn btn-success" onClick="visualizarForm('0');" href="#">1° Divisão</button></div>
-                    <div class="col-xs-3"><button class="btn btn-info" onClick="visualizarForm('1');" href="#">2° Divisão</button></div>
-                    <div class="col-xs-3"><button class="btn btn-warning" onClick="visualizarForm('2');" href="#">3° Divisão</button></div>
-                    <div class="col-xs-3"><button class="btn btn-danger" onClick="visualizarForm('3');" href="#">Feminino</button></div>
+                    <div class="col-xs-3"><button class="btn btn-success" onClick="visualizarForm('4');" href="#">1° Divisão</button></div>
+                    <div class="col-xs-3"><button class="btn btn-info" onClick="visualizarForm('5');" href="#">2° Divisão</button></div>
+                    <div class="col-xs-3"><button class="btn btn-warning" onClick="visualizarForm('6');" href="#">3° Divisão</button></div>
+                    <div class="col-xs-3"><button class="btn btn-danger" onClick="visualizarForm('7');" href="#">Feminino</button></div>
+                </div>
+                <div id="4" class="row" style="display: block;">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="panel panel-default">
+                                    <table class="table table-striped text-center">                                        
+                                        <tr>
+                                            <th class="text-center">Posição</th>
+                                            <th class="text-center">Atleta</th>
+                                            <th class="text-center">Equipe</th>
+                                            <th class="text-center">Gols</th>                                            
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>José Carlos Pedro dos Santos</td>
+                                            <td>Matsubara</td>
+                                            <td>4</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>2</td>
+                                            <td>José Jallison Oliveira Silva</td>
+                                            <td>Matsubara</td>
+                                            <td>4</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Eudimar Cabral dos Santos	</td>
+                                            <td>U. Juventude</td>
+                                            <td>2</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Francisco Eudes da Silva	</td>
+                                            <td>Tapeçaria</td>
+                                            <td>2</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Francisco Janilson Pessoa Feitosa</td>
+                                            <td>Matsubara</td>
+                                            <td>2</td>                                            
+                                        </tr>  
+                                    </table>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="5" class="row" style="display: none;">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="panel panel-default">
+                                    <table class="table table-striped text-center">                                
+                                        <tr>
+                                            <th class="text-center">Posição</th>
+                                            <th class="text-center">Atleta</th>
+                                            <th class="text-center">Equipe</th>
+                                            <th class="text-center">Gols</th>                                            
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Cícero Vinicius Leonardo	</td>
+                                            <td>Audax</td>
+                                            <td>2</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Emanuel Casseano Monteiro	</td>
+                                            <td>Audax</td>
+                                            <td>2</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Francisco Diogo Maia Azêvedo
+                                            </td>
+                                            <td>U. Milagrense</td>
+                                            <td>2</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Antônio Washington Teles de Sousa</td>
+                                            <td>Barcelona</td>
+                                            <td>1</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Carlos ítalo Morais de Araújo</td>
+                                            <td>EJC</td>
+                                            <td>1</td>                                            
+                                        </tr>  
+                                    </table>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="6" class="row" style="display: none;">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="panel panel-default">
+                                    <table class="table table-striped text-center">                                
+                                        <tr>
+                                            <th class="text-center">Posição</th>
+                                            <th class="text-center">Atleta</th>
+                                            <th class="text-center">Equipe</th>
+                                            <th class="text-center">Gols</th>                                            
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Cícero Dário Ferreira Raimundo</td>
+                                            <td>Fora o Baile</td>
+                                            <td>3</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Cícero Joel Tonheiro Ribeiro</td>
+                                            <td>River Play</td>
+                                            <td>2</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Everton Moura da Silva	</td>
+                                            <td>Velho Barreiro</td>
+                                            <td>2</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Fábio Araújo Claudino	</td>
+                                            <td>River Play</td>
+                                            <td>2</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>5</td>
+                                            <td>João Paulo Goes de Lima	</td>
+                                            <td>Mamoeiro</td>
+                                            <td>2</td>                                            
+                                        </tr>  
+                                    </table>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="7" class="row" style="display: none;">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="panel panel-default">
+                                    <table class="table table-striped text-center">                                
+                                        <tr>
+                                            <th class="text-center">Posição</th>
+                                            <th class="text-center">Atleta</th>
+                                            <th class="text-center">Equipe</th>
+                                            <th class="text-center">Gols</th>                                            
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Dyfane Iris dos Santos Silva	</td>
+                                            <td>Rosário</td>
+                                            <td>1</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Sabrina da Silva Oliveira Matias	</td>
+                                            <td>Rosário</td>
+                                            <td>1</td>                                            
+                                        </tr>  
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Tereza Andréia Pereira Silva	</td>
+                                            <td>Rosário</td>
+                                            <td>1</td>                                            
+                                        </tr>                              
+                                    </table>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
